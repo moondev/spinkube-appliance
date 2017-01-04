@@ -8,7 +8,7 @@ The first version of this guide can be found here: https://hackernoon.com/diy-ku
 
 http://www.spinnaker.io/ is set of microservices that make it easy to build continuous delivery pipelines. Most of the time it is run on a cloud platform such as AWS or GCP. While this works great, it can be pretty expensive due to the resource requirements ($200+ a month).
 
-Kubernetes is a first class deploy target with Spinnaker. We are taking this a step further by running SPinnaker on Kubernetes itself. The great thing about Kubernetes is it can run in the cloud and also on bare-metal. By setting up our own cluster, we can in a sense run our own "cloud" on our own hardware. With the advent of cheap "mini pcs" we can have our own target environment that can then deploy to the cloud. 
+Kubernetes is a first class deploy target with Spinnaker. We are taking this a step further by running Spinnaker on Kubernetes itself. The great thing about Kubernetes is it can run in the cloud and also on bare-metal. By setting up our own cluster, we can in a sense run our own "cloud" on our own hardware. With the advent of cheap "mini pcs" we can have our own target environment that can then deploy to the cloud. 
 
 ## Choosing hardware
 
