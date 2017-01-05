@@ -1,14 +1,18 @@
 # Creating a Spinnaker applicance with Kubernetes
 
-This guide will cover how I created a bare-metal continuous-delivery applicance using Spinnaker, Kubernetes and some inexpensive "mini pcs".
+This guide will cover how I created a bare-metal continuous-delivery applicance using Spinnaker, running on a Kubernetes cluster of "mini pcs".
 
 The first version of this guide can be found here: https://hackernoon.com/diy-kubernetes-cluster-with-x86-stick-pcs-b0b6b879f8a7
 
-## Spinnaker on bare metal
+## What is Spinnaker?
 
-http://www.spinnaker.io/ is set of microservices that make it easy to build continuous delivery pipelines. Most of the time it is run on a cloud platform such as AWS or GCP. While this works great, it can be pretty expensive due to the resource requirements ($200+ a month).
+http://www.spinnaker.io/ is set of microservices that make it easy to build continuous delivery pipelines. Contributers to the project include Netflix, Google, Microsoft and Kenzan. 
 
-Kubernetes is a first class deploy target with Spinnaker. We are taking this a step further by running Spinnaker on Kubernetes itself. The great thing about Kubernetes is it can run in the cloud and also on bare-metal. By setting up our own cluster, we can in a sense run our own "cloud" on our own hardware. With the advent of cheap "mini pcs" we can have our own target environment that can then deploy to the cloud. 
+The project brings together best practices and patterns for easily deploying immuatable infastructure style software. Deploy targets can be instances or containers running on a multitude of platforms including AWS, GCP, Azure and Kubernetes. 
+
+## Why Kubernetes?
+
+Spinnaker can be run from any of the above platforms, however due to the nature of the resources needed it can be quite expensive. Kubernetes allows us to set up our own "cloud" on bare metal. We can then use our Spinnaker instance to easily deploy to other cloud platforms or clusters. It's also pretty neat having a self contained "appliance" running Spinnaker. Hardware prices are contantly falling and it is pretty fun experimenting with software on our own "datacenter". 
 
 ## Choosing hardware
 
@@ -19,6 +23,7 @@ https://www.aliexpress.com/store/product/1Set-Nexbox-T9-Smart-TV-Box-Z8300-1-84G
 * 4GB memory
 * Quad core atom processor
 * 64GB SSD
+* Ethernet port
 
 It took a while for the boxes to arrive from Aliexpress but I was excited to get started when they did.
 
@@ -30,7 +35,9 @@ Unlike the tv-sticks, these boxes came with windows installed. That was no good 
 ![alt](img2.png)
 Thankfully after some searching I was able to find an ubuntu image with a modifed kernal to support the chipset. http://linuxiumcomau.blogspot.com/search?updated-min=2017-01-01T00:00:00%2B11:00&updated-max=2018-01-01T00:00:00%2B11:00&max-results=2
 
-![alt](img3.png)
+Burning the image to a thumb drive I was then able to hold the ESC key and boot from the drive to install.
+
+![alt](img7.png)
 
 With ubuntu installed on the boxes I was now able to install docker on each node.
 
@@ -56,6 +63,7 @@ Tunneling 8080 into the master node and the dashboard displayed like a charm.
 I then was able to make some minor modifications to the "spinikube" specs and get spinnaker installed.
 
 https://github.com/kenzanlabs/spinikube
+
 
 ![alt](img5.png)
 
